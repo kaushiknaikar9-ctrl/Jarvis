@@ -1,0 +1,27 @@
+# Core web framework
+flask>=2.3.0
+flask-cors>=4.0.0
+gunicorn>=21.0.0
+
+# HTTP client
+requests>=2.31.0
+
+# Transformers and ML
+transformers>=4.36.0
+accelerate>=0.25.0
+torch>=2.1.0
+huggingface-hub>=0.20.0
+
+# Speech recognition
+SpeechRecognition>=3.10.0
+pyttsx3>=2.90
+
+# YouTube
+pywhatkit>=5.4
+
+# Google Cloud services
+google-cloud-texttospeech>=2.16.0
+google-cloud-secret-manager>=2.18.0
+
+# Optional: audio processing
+pydub>=0.25.1

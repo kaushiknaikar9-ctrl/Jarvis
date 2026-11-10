@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Startup Overlay -->
+    <div class="startup-overlay" id="startup-overlay">
+        <div class="startup-logo">JARVIS <span>V3</span></div>
+        <div class="startup-progress">
+            <div class="startup-progress-bar" id="startup-progress-bar"></div>
+        </div>
+        <div class="startup-status" id="startup-status">Initializing systems...</div>
+    </div>
+
+    <div class="hud-container" id="main-hud">
+        <!-- Top Status Bar -->
+        <div class="top-bar">
+            <div class="window-controls">
+                <div class="control-btn minimize" onclick="windowControl('minimize')"></div>
+                <div class="control-btn maximize" onclick="windowControl('maximize')"></div>
+                <div class="control-btn close" onclick="windowControl('close')"></div>
+            </div>
+            <div class="status-group">
+                <div class="status-item">SYS_STATUS: <span id="system-status">ONLINE</span></div>
+                <div class="status-item">CONNECTION: <span id="conn-status">ENCRYPTED</span></div>
+            </div>
+            <div class="center-time">
+                <span id="clock" class="clock">00:00:00</span>
+                <span class="hud-title">JARVIS</span>
+            </div>
+            <div class="status-group">
+                <div class="status-item">CORE_TEMP: <span id="core-temp">42°C</span></div>
+                <div class="status-item">UPTIME: <span id="uptime">00:00:00</span></div>
+                <div class="status-item">
+                    BACKEND: <span id="backend-indicator" class="backend-indicator local">💻 LOCAL</span>
+                </div>
+                <div class="status-item">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="cloud-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span style="font-size: 10px; color: var(--text-muted);">CLOUD</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left Panel: Data Analytics -->
+        <div class="side-panel left-panel">
+            <div class="panel-section">
+                <div class="section-header">DIAGNOSTICS</div>
+                <div class="data-row"><span>CPU</span><div class="bar-container"><div class="bar" style="width: 45%"></div></div></div>
+                <div class="data-row"><span>MEM</span><div class="bar-container"><div class="bar" style="width: 30%"></div></div></div>
+                <div class="data-row"><span>NET</span><div class="bar-container"><div class="bar" style="width: 60%"></div></div></div>
+            </div>
+            <div class="panel-section">
+                <div class="section-header">ARC CORE</div>
+                <div class="circular-stat">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" class="bg-circle"></circle>
+                        <circle cx="50" cy="50" r="45" class="progress-circle" id="cpu-progress"></circle>
+                    </svg>
+                    <div class="stat-value" id="cpu-value">12%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Central Arc Reactor -->
+        <div class="reactor-wrapper">
+            <div class="reactor-container">
+                <div class="core" id="jarvis-core">
+                    <img src="core.jpg" class="core-img" alt="Core">
+                </div>
+                <div class="reactor-label label-top">SENSORS ACTIVE</div>
+                <div class="reactor-label label-bottom">STARK INDUSTRIES</div>
+            </div>
+        </div>
+
+        <!-- Right Panel: System Logs -->
+        <div class="side-panel right-panel">
+            <div class="panel-section">
+                <div class="section-header">SYSTEM LOGS</div>
+                <div class="log-container" id="system-logs">
+                    <div class="log-entry">> Initializing Jarvis...</div>
+                    <div class="log-entry">> Calibrating HUD...</div>
+                    <div class="log-entry">> Connection stable.</div>
+                </div>
+            </div>
+            <div class="panel-section">
+                <div class="section-header">TARGETING</div>
+                <div class="target-box">
+                    <div class="target-cross"></div>
+                    <div class="target-text">LOCK ON: NONE</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Interaction Area -->
+        <div class="bottom-bar">
+            <div class="text-display" id="display-text"></div>
+            <div class="control-group">
+                <button id="listen-btn" class="hud-button">INITIALIZE VOICE</button>
+            </div>
+            <div class="text-input-group" id="text-input-group" style="display:none;">
+                <input type="text" id="text-input" class="text-input" placeholder="Type your command..." autocomplete="off" />
+                <button id="send-btn" class="hud-button">SEND</button>
+            </div>
+            <div class="voice-selector" id="voice-selector" style="display:none;">
+                <label>Voice</label>
+                <select id="voice-select" class="hud-select"></select>
+                <button id="voice-test" class="hud-button small">TEST</button>
+            </div>
+            <div class="creator-footer">Created by Kaushik</div>
+        </div>
+
+        <!-- HUD Decorative overlays -->
+        <div class="scan-line"></div>
+        <div class="corner-decoration top-left"></div>
+        <div class="corner-decoration top-right"></div>
+        <div class="corner-decoration bottom-left"></div>
+        <div class="corner-decoration bottom-right"></div>
+        <div class="vignette"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
